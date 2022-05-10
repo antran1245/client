@@ -1,4 +1,4 @@
-import react, {useState} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
 
 export default function Form() {
@@ -10,12 +10,14 @@ export default function Form() {
     const handleSubmit = (e) =>{
         e.preventDefault();
         axios.post('http://localhost:8000/api/products/new', form)
-        .then(res => console.log(res))
+        .then(res => {res.status === 200?alert('Successfully created new product.'):alert(`Error: ${res.status}`)})
+        .catch(err => console.log(err));
+        e.reset();
     }
     return(
         <div>
             <h1>Product Manger</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="title">Title: </label>
                     <input type="text" name="title" onChange={(e) => setForm({...form, title:e.target.value})}/>
