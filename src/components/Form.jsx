@@ -13,8 +13,7 @@ export default function Form(props) {
     const handleSubmit = async(e) =>{
         e.preventDefault();
         try {
-            const resp = await axios.post('http://localhost:8000/api/products/new', form)
-            await resp.status === 200?alert('Successfully created new product.'):alert(`Error: ${resp.status}`)
+            await axios.post('http://localhost:8000/api/products/new', form)
         } catch (err) {
             console.log(err)
         }

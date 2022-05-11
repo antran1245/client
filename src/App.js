@@ -5,6 +5,7 @@ import Main from './components/Main';
 import { Wrapper } from './components/context/Wrapper';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import Detail from './components/Detail';
+import Update from './components/Update';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -14,6 +15,7 @@ function App() {
     const axiosCall = async() => {
       const resp = await axios.get('http://localhost:8000/api/products');
       setProducts(resp.data.message)
+      console.log(resp.data.message)
     }
     axiosCall()
     .catch(err => console.log(err))
@@ -24,8 +26,9 @@ function App() {
       <Wrapper.Provider value={{products, refresh, setRefresh}}>
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<Main />}/>
-            <Route exact path="/:id" element={<Detail/>} />
+            <Route path="/" element={<Main />}/>
+            <Route path="/:id" element={<Detail/>} />
+            <Route path="/:id/edit" element={<Update />} />
           </Routes>
         </BrowserRouter>
       </Wrapper.Provider>

@@ -5,6 +5,12 @@ form, h1, h2 {
   width: 300px;
   margin: auto;
 }
+form button {
+  margin: 10px;
+  padding: 10px;
+  width: 50%;
+}
+
 .form-group {
   display: flex;
   width: 300px;
@@ -16,19 +22,12 @@ form, h1, h2 {
   color: white;
   border-radius: 10px;
 }
-
 .form-group input {
   width: 60%;
   padding: 8px;
 }
 .form-group label {
   font-weight: bold;
-}
-
-form button {
-  margin: 10px;
-  padding: 10px;
-  width: 50%;
 }
 
 .product-listing {
@@ -38,4 +37,9 @@ form button {
 .product-listing * {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.buttonBar {
+  display: flex;
+  flex-direction: row;
 }
